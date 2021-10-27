@@ -1,0 +1,13 @@
+﻿
+@{
+if(@ViewBag.results!=null && @ViewBag.results!=""){
+    <div class="text-center">
+    <div class="alert alert-success" role="alert">
+      @ViewBag.results
+    </div>
+    </div>
+}
+}
+<div>
+<a  asp-action="Index"> Back to student list</a>  or <a  asp-action="Create">Add new student</a>
+</div>

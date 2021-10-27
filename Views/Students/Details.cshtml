@@ -1,0 +1,67 @@
+﻿@model StudentViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="text-center">
+@if (Model.Name!=null)
+{
+    <table class ="table">
+        <thead>
+          <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Gpa)</th>
+            <th>Pass or Fail</th>
+            <th>Symbol</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>@Model.Id </td>
+          <td>@Model.Name</td>
+          <td>@Model.Gpa</td>
+          @if(@Model.Gpa>=50){<td>Passed</td>} else{<td>Failed</td>}
+          @{
+          if(@Model.Gpa>=80)
+          {
+          <td>A</td>
+          } else if(@Model.Gpa<80 && @Model.Gpa>=70)
+          {
+          <td>B</td>
+          }
+          else if(@Model.Gpa<70 && @Model.Gpa>=60)
+         {
+         <td>C</td>
+         }
+          else if(@Model.Gpa<60 && @Model.Gpa>=50)
+          {
+            <td>D</td>
+          }
+          else if(@Model.Gpa<50 && @Model.Gpa>=40)
+          {
+            <td>E</td>
+          }
+        else if(@Model.Gpa<40 && @Model.Gpa>=30)
+        {
+          <td>F</td>
+        }
+        else
+        {
+          <td>FF</td>
+        }
+        }
+        </tr>
+      </tbody>
+    </table>
+ }
+ else
+ {
+     <div class="alert alert-info" role="alert">
+        <p> Student does not exists </p>
+     </div>
+ }
+</div>
+<div>
+<a  asp-action="Index"> Back to student list</a>
+</div>
