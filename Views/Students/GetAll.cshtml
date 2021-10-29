@@ -1,0 +1,46 @@
+﻿@model List<StudentViewModel>
+@{
+    ViewData["Title"] = "Student list";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>List of enrolled students</a>.</p>
+    <table class ="table">
+        <thead>
+          <tr>
+            <th>@Html.DisplayNameFor(model => model[0].Id)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Name)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Gpa)</th>
+            <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+      @foreach (var student in Model){
+        <tr>
+          <td>
+                @Html.DisplayFor(modelItem => student.Id )
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => student.Name)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => student.Gpa)
+           </td>
+          <td> <a asp-route-id="@student.Id" asp-action="Details">Details</a> | <a asp-route-id="@student.Id" asp-action="Delete">Delete</a>
+          | <a asp-route-id="@student.Id" asp-action="Update">update</a>
+          </td>
+        </tr>
+      }
+      </tbody>
+    </table>
+</div>
+
+<div class="dispace">
+    <div >
+        <a asp-action="Index"> Home</a>
+    </div>
+    <div >
+        <a  asp-action="Create">Add new student</a>
+    </div>
+</div>

@@ -1,13 +1,12 @@
 ﻿@model StudentViewModel
 @{
-    ViewData["Title"] = "Student";
+    ViewData["Title"] = "Update student";
 }
 <h1>@ViewData["Title"]</h1>
 <div class="form-center">
-    <div class="col-md-4">
+    <div class="col-md-4 formDiv">
       <form asp-action="Update">
         <fieldset>
-          <legend>Update student</legend>
           <div>
              <label for="name">Name:</label>
              <input type="text" name="name" value="" />

@@ -15,7 +15,13 @@ public class StudentsController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
+   public IActionResult Index()
+    {
+        StudentService _studanetDao = new StudentDao();
+        return View( _studanetDao.getStudents());
+    }
+
+    public IActionResult GetAll()
     {
         StudentService _studanetDao = new StudentDao();
         return View( _studanetDao.getStudents());
@@ -54,6 +60,20 @@ public class StudentsController : Controller
         StudentService _studanetDao = new StudentDao();
         ViewBag.results = _studanetDao.removeStudent(id);
         return RedirectToAction(actionName: "Index", controllerName: "Students");
+    }
+
+   public IActionResult Search(string keyword)
+    {
+        StudentService _studanetDao = new StudentDao();
+        if(keyword==null){
+            return RedirectToAction(actionName: "GetAll", controllerName: "Students");
+        }
+        return View( "GetAll", _studanetDao.getStudents().Where(st => st.Name.Contains(keyword)).ToList() );
+    }
+
+    public IActionResult Privacy()
+    {
+        return View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
