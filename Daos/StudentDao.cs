@@ -10,12 +10,13 @@ namespace dotnetWebApp.Daos
     {
 
         private readonly ILogger<StudentDao> _logger;
-        private static string connStr = "server=localhost;user=user;password=user;database=StudentDB";
+        private static string connStr = "server=10.97.198.244;user=root;password=test1234;database=StudentDB";
 
         public StudentDao(){
         }
         public StudentDao(ILogger<StudentDao> logger) =>
                 _logger = logger;
+
 
         public List<StudentViewModel> getStudents() {
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -23,7 +24,6 @@ namespace dotnetWebApp.Daos
             try
             {
                 conn.Open();
-
                 string sql = "SELECT id, name, gpa From students";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
